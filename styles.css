@@ -1,0 +1,145 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #fffafc;
+}
+
+.top-header {
+  background: white;
+  padding: 12px 0;
+  border-bottom: 2px solid #ffe6f0;
+}
+
+.header-container {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-name {
+  font-size: 26px;
+  font-weight: bold;
+  color: #d63384;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #444;
+  font-weight: 600;
+  margin-left: 18px;
+  font-size: 15px;
+}
+.nav-links a:hover { color: #d63384; }
+
+.banner {
+  background: #ffd6e7;
+  padding: 18px;
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  color: #b30059;
+}
+
+.container { width: 90%; margin: auto; }
+.section { padding: 25px 0; }
+
+/* CAROUSEL */
+.carousel-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.carousel {
+  display: flex;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  gap: 12px;
+  padding: 10px;
+}
+
+.carousel::-webkit-scrollbar { display: none; }
+
+.arrow {
+  background:#d63384;
+  color:white;
+  border:none;
+  font-size:18px;
+  padding:6px 10px;
+  border-radius:50%;
+  cursor:pointer;
+  margin:0 6px;
+}
+.arrow:hover { opacity:0.8; }
+
+.card {
+  min-width: 150px;
+  background: white;
+  border: 1px solid #ffd6e7;
+  border-radius: 6px;
+  padding: 8px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.card img {
+  width: 120px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.price { color:#d63384; font-weight:bold; margin:4px 0; }
+
+.btn {
+  background:#d63384;
+  border:none;
+  color:white;
+  padding:6px 10px;
+  border-radius:4px;
+  cursor:pointer;
+  font-size:13px;
+}
+.btn:hover{opacity:0.8;}
+
+.reviews, .insta {
+  background:#fff2f8;
+  padding:15px;
+  border-radius:6px;
+  margin:8px 0;
+}
+
+input,textarea{
+  width:100%;
+  padding:10px;
+  margin:5px 0;
+  border:1px solid #ffb6d5;
+  border-radius:4px;
+}
+
+footer {
+  background:#ffe6f0;
+  text-align:center;
+  padding:15px;
+  margin-top:20px;
+}
+
+/* Floating WhatsApp */
+.whatsapp-float {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  box-shadow:0 4px 10px rgba(0,0,0,0.2);
+  cursor:pointer;
+}
+.whatsapp-float img{width:30px;}

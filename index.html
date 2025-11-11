@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Janya Fashions</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top-header">
+  <div class="header-container">
+    <div class="brand-name">Janya Fashions</div>
+    <div class="nav-links">
+      <a href="#women">Women</a>
+      <a href="#kids">Kids</a>
+      <a href="#reviews">Reviews</a>
+      <a href="#insta">Instagram</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<div class="banner">🎀 Huge Sale! Up to 40% OFF on New Arrivals! 🎀</div>
+
+<!-- WOMEN SECTION -->
+<section id="women" class="section container">
+  <h2>Women Collection</h2>
+  <div class="carousel-wrapper">
+    <button class="arrow left" onclick="scrollLeftDiv('womenTrack')">❮</button>
+    <div class="carousel" id="womenTrack">
+
+<script>
+const womenImgs = [
+"https://m.media-amazon.com/images/I/71KcUgYanhL._UY741_.jpg",
+"https://m.media-amazon.com/images/I/61gY2oJ7qTL._UY741_.jpg",
+"https://m.media-amazon.com/images/I/61f7l9m9FSL._UX679_.jpg",
+"https://m.media-amazon.com/images/I/71ZkO+5u6OL._UX679_.jpg",
+"https://m.media-amazon.com/images/I/71HblAHs5xL._UY741_.jpg"
+];
+for (let i = 1; i <= 20; i++) {
+  let img = womenImgs[i % womenImgs.length];
+  document.write(`
+    <div class="card">
+      <img src="${img}">
+      <h4>Women Dress ${i}</h4>
+      <div class="price">₹${599 + i*10}</div>
+      <button class="btn" onclick="selectItem('Women Dress ${i}', '₹${599 + i*10}')">Shop Now</button>
+    </div>
+  `);
+}
+</script>
+
+    </div>
+    <button class="arrow right" onclick="scrollRightDiv('womenTrack')">❯</button>
+  </div>
+</section>
+
+<!-- KIDS SECTION -->
+<section id="kids" class="section container">
+  <h2>Kids Collection</h2>
+  <div class="carousel-wrapper">
+    <button class="arrow left" onclick="scrollLeftDiv('kidsTrack')">❮</button>
+    <div class="carousel" id="kidsTrack">
+
+<script>
+const kidImgs = [
+"https://m.media-amazon.com/images/I/71kqg5Z9pEL._UY741_.jpg",
+"https://m.media-amazon.com/images/I/6100r8GVMqL._UX679_.jpg",
+"https://m.media-amazon.com/images/I/61De0g0+zHL._UX679_.jpg",
+"https://m.media-amazon.com/images/I/61Z6DXYGyuL._UX679_.jpg",
+"https://m.media-amazon.com/images/I/71h6Q8QdGKL._UY741_.jpg"
+];
+for (let i = 1; i <= 20; i++) {
+  let img = kidImgs[i % kidImgs.length];
+  document.write(`
+    <div class="card">
+      <img src="${img}">
+      <h4>Kids Dress ${i}</h4>
+      <div class="price">₹${499 + i*10}</div>
+      <button class="btn" onclick="selectItem('Kids Dress ${i}', '₹${499 + i*10}')">Shop Now</button>
+    </div>
+  `);
+}
+</script>
+
+    </div>
+    <button class="arrow right" onclick="scrollRightDiv('kidsTrack')">❯</button>
+  </div>
+</section>
+
+<section id="reviews" class="section container">
+  <h2>Customer Reviews</h2>
+  <div class="reviews">⭐️⭐️⭐️⭐️⭐️ "Loved the quality! My kids look adorable!" – Priya</div>
+  <div class="reviews">⭐️⭐️⭐️⭐️ "Amazing designs, great service!" – Ananya</div>
+</section>
+
+<section id="insta" class="section container">
+  <h2>Instagram Gallery</h2>
+  <div class="insta">📷 Follow us @janyafashions</div>
+</section>
+
+<section id="contact" class="section container">
+  <h2>Contact Us</h2>
+  <input type="text" placeholder="Your Name">
+  <input type="email" placeholder="Your Email">
+  <textarea placeholder="Your Message"></textarea>
+  <button class="btn">Send Message</button>
+</section>
+
+<footer>© 2025 Janya Fashions | Made with ❤️ for style</footer>
+
+<div class="whatsapp-float" onclick="openWhatsApp()">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+</div>
+
+<script>
+let selectedProduct = "None";
+
+function selectItem(name, price) {
+  selectedProduct = name + " - " + price;
+  alert("✅ Selected: " + selectedProduct + "\nNow click WhatsApp to Order");
+}
+
+function openWhatsApp() {
+  if (selectedProduct === "None") {
+    alert("Please select a product first");
+    return;
+  }
+  const phone = "919876543210"; // Replace with your number
+  const msg = "Hi, I'm interested in " + selectedProduct + " from Janya Fashions.";
+  window.open("https://wa.me/" + phone + "?text=" + encodeURIComponent(msg), "_blank");
+}
+
+function scrollLeftDiv(id) {
+  document.getElementById(id).scrollBy({ left: -260, behavior: "smooth" });
+}
+function scrollRightDiv(id) {
+  document.getElementById(id).scrollBy({ left: 260, behavior: "smooth" });
+}
+</script>
+
+</body>
+</html>
