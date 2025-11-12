@@ -5,39 +5,113 @@ body {
   background: #fffafc;
 }
 
+/* ===== LUXURY HEADER ===== */
 .top-header {
-  background: white;
+  background: #fff;
   padding: 12px 0;
-  border-bottom: 2px solid #ffe6f0;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  font-family: 'Poppins', sans-serif;
 }
 
 .header-container {
+  display: flex;
+  flex-direction: column;
   width: 90%;
   margin: auto;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;  /* moves all header content to left */
+  text-align: left;
 }
 
 .brand-name {
-  font-size: 26px;
-  font-weight: bold;
-  color: #d63384;
+  font-family: "Playfair Display", serif;
+  font-size: 34px;
+  color: #222;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-align: left;        /* ensures text aligns left */
+  margin-left: 0; 
+  text-transform: uppercase;
+}
+
+.brand-name::after {
+  content: "";
+  display: block;
+  width: 100vw;               /* Full page width */
+  height: 4px;                /* Thick line */
+  background: linear-gradient(90deg, #ff9ecb, #d63384, #ff9ecb);
+  box-shadow: 0 0 10px #d63384, 0 0 20px #ff85c1;
+  margin: 8px 0 20px -50vw;     /* Centers full-width line */
+  position: relative;
+  left: 100%;
+  animation: glowLine 1.5s infinite alternate;
+}
+
+/* Optional glow animation */
+@keyframes glowLine {
+  from {
+    box-shadow: 0 0 8px #d63384, 0 0 16px #ff85c1;
+  }
+  to {
+    box-shadow: 0 0 14px #ff5da5, 0 0 26px #ff99cc;
+  }
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
 }
 
 .nav-links a {
   text-decoration: none;
-  color: #444;
-  font-weight: 600;
-  margin-left: 28px;
-  margin-right: 40px;
-  font-size: 15px;
+  color: #555;
+  font-size: 16px;
+  font-weight: 700;
+  transition: 0.3s;
 }
-.nav-links a:hover { color: #d63384; }
+
+.nav-links a:hover {
+  color: #d63384;
+}
+
+/* ===== HAMBURGER MENU (MOBILE) ===== */
+.menu-toggle {
+  display: none;
+  font-size: 26px;
+  cursor: pointer;
+  color: #d63384;
+  position: absolute;
+  right: 20px;
+  top: 20px;
+}
+
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    background: #fff;
+    width: 100%;
+    text-align: center;
+    gap: 16px;
+    padding: 10px 0;
+    border-top: 1px solid #eee;
+  }
+
+  .nav-links.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
+
 
 .banner {
   background: #ffd6e7;
-  padding: 18px;
+  padding: 28px;
   text-align: center;
   font-size: 20px;
   font-weight: bold;
@@ -50,6 +124,7 @@ body {
 .banner span {
   display: inline-block;
   padding-left: 100%;
+  padding-top: 0.0%;
   animation: move 80s linear infinite;
 }
 
@@ -92,7 +167,7 @@ body {
 
 /* Image container hover zoom */
 .card {
-  width: 48%;      /* 2 images per row on mobile */
+  width: 38%;      /* 2 images per row on mobile */
   margin-bottom: 10px;
   overflow: hidden;  /* ensures zoom stays inside the box */
 }
@@ -193,8 +268,24 @@ footer {
   font-weight: 600;
   font-size: 14px;
   cursor: pointer;
-  z-index: 999;
+  z-index: 3000;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+}
+
+/* Optional hover effect */
+.cart-btn:hover {
+  transform: scale(1.05);
+  transition: 0.2s;
+}
+
+@media (max-width: 768px) {
+  .cart-btn {
+    top: 18px;
+    right: 60px; /* moves slightly left so ☰ doesn't overlap */
+  }
 }
 
 /* ========== CART SIDEBAR ========== */
