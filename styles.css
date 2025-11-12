@@ -92,6 +92,8 @@ body {
 
 /* Image container hover zoom */
 .card {
+  width: 48%;      /* 2 images per row on mobile */
+  margin-bottom: 10px;
   overflow: hidden;  /* ensures zoom stays inside the box */
 }
 
@@ -110,6 +112,20 @@ body {
 
 .card img[onclick] {
   cursor: pointer;
+}
+
+@media (max-width: 600px) {
+  .carousel {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow-x: hidden;
+  }
+}
+
+.carousel {
+  display: flex;
+  gap: 12px;
+  overflow-x: auto;
 }
 
 .price { color:#d63384; font-weight:bold; margin:4px 0; }
