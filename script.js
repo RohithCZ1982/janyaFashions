@@ -62,6 +62,20 @@ function updateCartUI() {
   `;
 }
 
+function openWhatsApp(){
+ const phoneNumber = "91872507355"; // ✅ Replace with your full number (no + or spaces)
+  const message = "Hi Janya Fashions! I would like to know more about your collection.";
+
+  // Encode the message so spaces and symbols work properly in the URL
+  const encodedMessage = encodeURIComponent(message);
+
+  // Build the WhatsApp link
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+  // Open in a new tab/window
+  window.open(whatsappURL, "_blank");
+}
+
 function toggleCart() {
   document.getElementById("cartSidebar").classList.toggle("open");
 }
