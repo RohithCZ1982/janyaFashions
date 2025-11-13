@@ -12,7 +12,11 @@
   <div class="header-container">
 
     <!-- Logo (Text for now, can replace with image later) -->
-    <div class="brand-name">Janya Fashions</div>
+    <h1 class="brand-name">
+    <span class="line1">Janya</span><br>
+    <span class="line2">Fashions</span>
+  </h1>
+
 
     <!-- Hamburger icon for mobile -->
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
@@ -20,13 +24,16 @@
     <!-- Navigation links -->
     <nav class="nav-links" id="navMenu">
       <a href="index.html">Home</a>
+      <a href="kids.html">Kids</a>
     </nav>
+
+    <!-- CART BUTTON -->
+   <button class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
 
   </div>
 </header>
 
-<!-- CART BUTTON -->
-<button class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
+
 
 <!-- CART SIDEBAR -->
 <div id="cartSidebar">

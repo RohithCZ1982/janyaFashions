@@ -6,14 +6,6 @@ body {
   color: #333;
 }
 
-header {
-  position: sticky;
-  top: 0;
-  z-index: 2500; /* higher than cart sidebar */
-  background: #fff;
-}
-
-
 /* ===== LUXURY HEADER ===== */
 .top-header {
   background: #fff;
