@@ -2,7 +2,8 @@ body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
-  background: #fffafc;
+  background: linear-gradient(180deg, #fff0f7, #ffe6f0, #fff);
+  color: #333;
 }
 
 /* ===== LUXURY HEADER ===== */
@@ -39,17 +40,19 @@ body {
 .brand-name::after {
   content: "";
   display: block;
-  width: 100vw;               /* Full page width */
-  height: 4px;                /* Thick line */
+  position: absolute;
+  width: 100vw;  /* full page width */
+  height: 4px;   /* line thickness */
   background: linear-gradient(90deg, #ff9ecb, #d63384, #ff9ecb);
   box-shadow: 0 0 10px #d63384, 0 0 20px #ff85c1;
-  margin: 8px 0 20px -50vw;     /* Centers full-width line */
-  position: relative;
-  left: 100%;
+  margin-top: 8px;
+  margin-bottom: 60px;
+  left:0;
+  right:0;
+  border-radius: 100px;
   animation: glowLine 1.5s infinite alternate;
 }
 
-/* Optional glow animation */
 @keyframes glowLine {
   from {
     box-shadow: 0 0 8px #d63384, 0 0 16px #ff85c1;
@@ -59,9 +62,11 @@ body {
   }
 }
 
+
 .nav-links {
   display: flex;
   gap: 24px;
+   margin-top: 30px;
 }
 
 .nav-links a {
@@ -368,3 +373,311 @@ footer {
   from { transform: scale(0.6); opacity: 0; }
   to { transform: scale(1); opacity: 1; }
 }
+
+/* 🌸 Hero Banner */
+.hero {
+  background: linear-gradient(135deg, #ffe6f0 0%, #ffd9e8 100%);
+  text-align: center;
+  padding: 30px 20px;
+  border-bottom: 1px solid #f8b8d0;
+}
+
+.hero-content {
+  max-width: 700px;
+  margin: auto;
+}
+
+.hero h1 {
+  font-size: 42px;
+  color: #d63384;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 10px;
+}
+
+.hero h1 span {
+  color: #ff6fb0;
+}
+
+.hero p {
+  color: #555;
+  font-size: 18px;
+  margin-bottom: 25px;
+  line-height: 1.6;
+}
+
+/* 🛍️ Shop Now Button */
+.hero-btn {
+  background: linear-gradient(90deg, #ff7fbf, #d63384);
+  color: white;
+  border: none;
+  padding: 12px 32px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(214, 51, 132, 0.3);
+}
+
+.hero-btn:hover {
+  transform: scale(1.08);
+  box-shadow: 0 6px 16px rgba(214, 51, 132, 0.4);
+}
+
+.footer {
+  background: #fff;
+  text-align: center;
+  padding: 20px 0;
+  border-top: 1px solid #eee;
+  font-family: 'Poppins', sans-serif;
+}
+
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.social-icons {
+  display: flex;
+  gap: 16px;
+  margin-top: 4px;
+}
+
+.social-icons a {
+  color: #d63384;
+  font-size: 20px;
+  text-decoration: none;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.social-icons a:hover {
+  color: #ff6fb0;
+  transform: scale(1.2);
+}
+
+/* 🌸 Contact Form Styling */
+#contact form {
+  max-width: 400px;      /* 👈 makes form narrower */
+  margin: 0 auto;  
+  margin-left: 40px;      /* centers it */
+  text-align: left;      /* keeps field alignment natural */
+  background: #fff;      /* optional: white background */
+  padding: 20px 25px;
+  border-radius: 10px;
+  box-shadow: 0 0 12px rgba(214, 51, 132, 0.15); /* soft pink glow */
+}
+
+#contact input,
+#contact textarea {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 15px;
+  font-family: "Poppins", sans-serif;
+}
+
+#contact textarea {
+  height: 100px;
+  resize: none;
+}
+
+#contact button {
+  width: 100%;
+  background: linear-gradient(90deg, #ff7fbf, #d63384);
+  border: none;
+  padding: 10px;
+  border-radius: 25px;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+#contact button:hover {
+  transform: scale(1.05);
+}
+
+/* 🌸 Customer Reviews Section */
+#reviews {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+#reviews h2 {
+  color: #d63384;
+  margin-bottom: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+/* 💬 Scrollable review box */
+.review-box {
+  max-width: 600px;
+  height: 200px;               /* 👈 controls visible area */
+  margin: 0 auto;
+  overflow-y: auto;            /* vertical scroll */
+  padding: 15px;
+  border: 2px solid #ffd9e8;
+  border-radius: 12px;
+  background: #fff;
+  box-shadow: 0 0 12px rgba(214, 51, 132, 0.1);
+  scroll-behavior: smooth;
+}
+
+/* 🌸 Customer Reviews Section */
+#reviews {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+#reviews h2 {
+  color: #d63384;
+  margin-bottom: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+/* 💬 Scrollable review container */
+.review-scroll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  max-height: 250px;          /* 👈 controls visible area */
+  overflow-y: auto;           /* enables scrolling */
+  padding: 10px;
+  scroll-behavior: smooth;
+}
+
+/* 🌸 Customer Reviews Section */
+#reviews {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+#reviews h2 {
+  color: #d63384;
+  margin-bottom: 20px;
+  font-family: "Playfair Display", serif;
+}
+
+/* 💫 Horizontal scroll container */
+.review-scroll-horizontal {
+  display: flex;
+  gap: 16px;
+  overflow-x: auto;                /* 👈 enables horizontal scroll */
+  overflow-y: hidden;
+  scroll-behavior: smooth;
+  padding: 10px 0 10px 10px;
+  scrollbar-width: thin;
+  scrollbar-color: #ff99cc #fff;
+}
+
+.review-scroll-horizontal::-webkit-scrollbar {
+  height: 6px;                    /* smaller horizontal scrollbar */
+}
+
+.review-scroll-horizontal::-webkit-scrollbar-thumb {
+  background: #ff99cc;
+  border-radius: 4px;
+}
+
+.review-scroll-horizontal::-webkit-scrollbar-thumb:hover {
+  background: #d63384;
+}
+
+/* ✨ Individual Review Cards */
+.review-card {
+  background: #fff5f9;
+  border: 1px solid #ffd9e8;
+  border-radius: 12px;
+  flex: 0 0 280px;                /* 👈 width of each card */
+  padding: 15px 20px;
+  box-shadow: 0 0 10px rgba(214, 51, 132, 0.15);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  scroll-snap-align: start;
+}
+
+.review-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 16px rgba(214, 51, 132, 0.3);
+}
+
+.review-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.review-card h4 {
+  color: #d63384;
+  font-size: 14px;
+  text-align: right;
+  margin: 0;
+}
+
+/* Optional smooth snap scrolling */
+.review-scroll-horizontal {
+  scroll-snap-type: x mandatory;
+}
+
+/* 💕 Contact Details Section */
+#contact-details {
+  background: #ffe6f0; /* soft pastel pink background */
+  padding: 40px 20px;
+  text-align: center;
+  border-top: 2px solid #ffd9e8;
+  border-bottom: 2px solid #ffd9e8;
+}
+
+#contact-details h2 {
+  color: #d63384;
+  font-family: "Playfair Display", serif;
+  margin-bottom: 20px;
+}
+
+.contact-details-box {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+
+.contact-item {
+  background: #fff;
+  border-radius: 10px;
+  padding: 15px 25px;
+  min-width: 220px;
+  box-shadow: 0 0 10px rgba(214, 51, 132, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.contact-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(214, 51, 132, 0.25);
+}
+
+.contact-item i {
+  color: #d63384;
+  font-size: 20px;
+  margin-bottom: 8px;
+}
+
+.contact-item p {
+  color: #333;
+  font-size: 15px;
+  margin: 0;
+}
+
+/* Responsive for mobile */
+@media (max-width: 768px) {
+  .contact-details-box {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
