@@ -143,3 +143,10 @@ document.addEventListener("click", function (event) {
     cartSidebar.classList.remove("open");
   }
 });
+
+function scrollToTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
