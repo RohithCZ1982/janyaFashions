@@ -26,6 +26,19 @@ body {
   text-align: left;
 }
 
+/* Align menu icon (left) and cart button (right) */
+.header-top-row {
+  display: flex;
+  justify-content: space-between;  /* 👈 left, center, right layout */
+  align-items: center;
+  padding: 10px 20px;
+  background: #fff;
+  position: sticky;
+  top: 0;
+  z-index: 5000;
+}
+
+
 .brand-name {
   font-family: "Playfair Display", serif;
   font-size: 34px;
@@ -116,7 +129,7 @@ body {
 
 .banner {
   background: #ffd6e7;
-  padding: 28px;
+  padding: 10px;
   text-align: center;
   font-size: 20px;
   font-weight: bold;
@@ -297,6 +310,23 @@ footer {
     top: 18px;
     right: 60px; /* moves slightly left so ☰ doesn't overlap */
   }
+}
+
+.cart-btn-header {
+  background: linear-gradient(90deg, #ff7fbf, #d63384);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+
+}
+
+.cart-btn-header:hover {
+  transform: scale(1.05);
+   right: -350px;
 }
 
 /* ========== CART SIDEBAR ========== */
@@ -714,3 +744,56 @@ footer {
 }
 
 
+/* 🔲 Three-line menu icon */
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+  padding: 5px 8px;
+  user-select: none;
+}
+
+/* Small dropdown menu */
+/* Menu icon */
+.menu-icon {
+  font-size: 28px;
+  cursor: pointer;
+  padding: 5px 8px;
+  user-select: none;
+}
+
+/* Small dropdown menu */
+.small-menu {
+  position: absolute;
+  top: 40px;        /* 👈 right below the three-line icon */
+  right: 50;         /* 👈 sticks to the icon */
+  background: #ffe6f0;
+  padding: 10px 0;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  display: none;    /* 👈 hidden by default */
+  width: 160px;     /* 👈 small size */
+  z-index: 5000;
+}
+
+.small-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: #d63384;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.small-menu a:hover {
+  background: #ffd9e8;
+}
+
+/* Show on click */
+.small-menu.open {
+  display: block;
+}
+
+/* Wrapper to align the icon */
+.menu-wrapper {
+  position: relative; /* 🔥 important for dropdown */
+}

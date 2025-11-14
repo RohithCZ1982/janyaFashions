@@ -10,28 +10,47 @@
 </head>
 <body>
 
-<header class="top-header">
-  <div class="header-container">
+<div class="banner">
+  <span>🎀 Huge Sale! Up to 40% OFF on New Arrivals! 🎀</span>
+</div>
 
-    <!-- Logo (Text for now, can replace with image later) -->
-     <h1 class="brand-name">
-    <span class="line1">Janya</span><br>
-    <span class="line2">Fashions</span>
-  </h1>
-    <!-- Hamburger icon for mobile -->
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+<header>
+  <div class="header-top-row">
 
-    <!-- Navigation links -->
-    <nav class="nav-links" id="navMenu">
-      <a href="women.html">Women</a>
-      <a href="kids.html">Kids</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#insta">Instagram</a>
-      <a href="#contact">Contact</a>
-    </nav>
+    <!-- Menu icon (left) -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
+     <nav id="smallMenu" class="small-menu">
+        <a href="index.html">Home</a>
+        <a href="women.html">Women</a>
+        <a href="kids.html">Kids</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+    <!-- Brand name (center or left depending on your style) -->
+    <h1 class="brand-name">
+    Janya Fashions
+    </h1>
+     <!-- Cart button (RIGHT) -->
+    <button class="cart-btn-header" onclick="toggleCart()">
+      🛒 (<span id="cartCount">0</span>)
+    </button>
   </div>
 </header>
+
+<!-- CART SIDEBAR -->
+<div id="cartSidebar">
+  <div class="cart-header">
+    Your Cart
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+
+  <div id="cartItems"></div>
+  <br>
+  <button class="btn" onclick="checkoutWhatsApp()">Order via WhatsApp</button>
+  <br><br>
+  <button class="btn" onclick="emptyCart()">Empty Cart</button>
+</div>
 
 <!-- 🌸 Hero Section -->
 <section class="hero">
@@ -43,9 +62,7 @@
   </div>
 </section>
 
-<div class="banner">
-  <span>🎀 Huge Sale! Up to 40% OFF on New Arrivals! 🎀</span>
-</div>
+
 
 <section id="reviews" class="section container">
   <h2>Customer Reviews</h2>

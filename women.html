@@ -8,27 +8,31 @@
 </head>
 <body>
 
-<header class="top-header">
-  <div class="header-container">
+<div class="banner">
+  <span>🎀 Huge Sale! Up to 40% OFF on New Arrivals! 🎀</span>
+</div>
 
-    <!-- Logo (Text for now, can replace with image later) -->
+<header>
+  <div class="header-top-row">
+
+    <!-- Menu icon (left) -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
+
+     <nav id="smallMenu" class="small-menu">
+        <a href="index.html">Home</a>
+        <a href="women.html">Women</a>
+        <a href="kids.html">Kids</a>
+      </nav>
+
+    <!-- Brand name (center or left depending on your style) -->
     <h1 class="brand-name">
-    <span class="line1">Janya</span><br>
-    <span class="line2">Fashions</span>
-  </h1>
+        Janya Fashions
+    </h1>
 
-
-    <!-- Hamburger icon for mobile -->
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-    <!-- Navigation links -->
-    <nav class="nav-links" id="navMenu">
-      <a href="index.html">Home</a>
-      <a href="kids.html">Kids</a>
-    </nav>
-
-    <!-- CART BUTTON -->
-   <button class="cart-btn" onclick="toggleCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
+    <!-- Cart button (RIGHT) -->
+    <button class="cart-btn-header" onclick="toggleCart()">
+      🛒 (<span id="cartCount">0</span>)
+    </button>
 
   </div>
 </header>
@@ -49,13 +53,17 @@
   <button class="btn" onclick="emptyCart()">Empty Cart</button>
 </div>
 
-<div class="banner">
-  <span>🎀 Huge Sale! Up to 40% OFF on New Arrivals! 🎀</span>
-</div>
+<!-- 🌸 Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Women</h1>
+    <p>Discover the latest trends in Women & Kids fashion — curated with elegance and comfort.</p>
+  </div>
+</section>
+
 
 <!-- WOMEN SECTION -->
 <section id="women" class="section container">
-  <h2>Women Collection</h2>
   <div class="carousel-wrapper">
     <div class="carousel" id="womenTrack">
       <script>
