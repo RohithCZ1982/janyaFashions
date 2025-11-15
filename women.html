@@ -6,6 +6,7 @@
 <title>Janya Fashions</title>
 <link rel="stylesheet" href="styles.css">
 <script src="script.js" ></script>
+<script src="cartscript.js" ></script>
 </head>
 <body>
 
@@ -29,12 +30,6 @@
     <h1 class="brand-name">
         Janya Fashions
     </h1>
-
-    <!-- Cart button (RIGHT) -->
-    <button class="cart-btn-header" onclick="toggleCart()">
-      🛒 (<span id="cartCount">0</span>)
-    </button>
-
   </div>
 </header>
 
@@ -87,17 +82,46 @@
         let price = womenPrice[i % womenImgs.length];
         document.write(`
           <div class="card">
-            <img src="${img}" onclick="openImg(this.src)">
-            <h4>Women Dress ${i}</h4>
-            <div class="price">₹${price}</div>
-            <button class="btn" onclick="addToCart('Women Dress ${i}', ${price}, 'JF-W-0${i}')">Add to Cart</button>
-          </div>
+            <img src="${img}"  class="product-img" onclick="openPreview('Women Dress ${i}', ${499+i*10}, src)">
+           </div>
         `);
       }
       </script>
     </div>
   </div>
 </section>
+
+
+
+<div class="whatsapp-float" onclick="openWhatsApp()">
+  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+</div>
+
+<!-- PRODUCT PREVIEW POPUP -->
+<div id="previewPopup" class="preview-popup">
+  <div class="popup-content">
+    <span class="close-popup" onclick="closePreview()">&times;</span>
+
+    <img id="popupImage" class="popup-img" src="">
+
+    <h3 id="popupName"></h3>
+    <p id="popupPrice"></p>
+
+    <button class="popup-cart-btn" onclick="addPopupToCart()">
+      Add to Cart
+    </button>
+  </div>
+</div>
+
+<!-- Floating Cart Button -->
+<div class="floating-cart" onclick="toggleCart()">
+  🛒
+  <span id="floatingCartCount" class="floating-cart-count">0</span>
+</div>
+
+<div class="top-button" onclick="scrollToTop()">
+  ⟰
+</div>
 
 <footer>
   <div class="footer-content">
@@ -112,16 +136,6 @@
     </div>
   </div>
 </footer>
-
-<div class="whatsapp-float" onclick="openWhatsApp()">
-  <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
-</div>
-
-<!-- IMAGE POPUP LIGHTBOX -->
-<div id="imgView" onclick="closeImg()">
-  <img id="imgFull">
-</div>
-
 
 </body>
 </html>

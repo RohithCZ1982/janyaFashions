@@ -1,5 +1,4 @@
-let cart = [];
-updateCartUI();
+
 
 function toggleMenu() {
   document.getElementById("smallMenu").classList.toggle("open");
@@ -8,33 +7,15 @@ function toggleMenu() {
   // Close image popup on ESC key press
 document.addEventListener("keydown", function(event) {
     if (event.key == "Escape") {
-       closeImg();
+       closePreview();
   }
 });
 
-function addToCart(name, price, code) {
-  cart.push({name, price, code});
-  localStorage.setItem('jf_cart', JSON.stringify(cart));
-  updateCartUI();
-}
 
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  localStorage.setItem('jf_cart', JSON.stringify(cart));
-  updateCartUI();
-}
-
-function emptyCart() {
-  if (confirm("Clear your entire cart?")) {
-    cart = [];
-    localStorage.removeItem("jf_cart");   // ✅ delete from browser storage
-    updateCartUI();                       // refresh UI
-  }
-}
 
 function updateCartUI() {
   cart = JSON.parse(localStorage.getItem('jf_cart')) || [];
-  document.getElementById("cartCount").innerText = cart.length;
+  document.getElementById("floatingCartCount").innerText = cart.length;
 
   const cartBox = document.getElementById("cartItems");
   cartBox.innerHTML = "";
@@ -48,7 +29,6 @@ function updateCartUI() {
       <div class="cart-item">
         <b>${item.name}</b> <br>
         💰 ₹${item.price} <br>
-        🏷 ${item.code} <br>
         <button class="remove-btn" onclick="removeFromCart(${i})">Remove</button>
       </div>
     `;
@@ -93,16 +73,7 @@ function scrollRightDiv(id) {
   document.getElementById(id).scrollBy({ left: 260, behavior: "smooth" });
 }
 
-function openImg(src) {
-  document.getElementById("imgView").style.display = "flex";
-  document.getElementById("imgFull").src = src;
-}
-
-function closeImg() {
-  document.getElementById("imgView").style.display = "none";
-}
-
-  let message = "Hi, I want to order:\n\n";
+let message = "Hi, I want to order:\n\n";
   cart.forEach(c => {
     message += `🛍 ${c.name}\n₹${c.price}  |  ${c.code}\n\n`;
   });

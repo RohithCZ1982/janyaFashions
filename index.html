@@ -31,10 +31,6 @@
     <h1 class="brand-name">
     Janya Fashions
     </h1>
-     <!-- Cart button (RIGHT) -->
-    <button class="cart-btn-header" onclick="toggleCart()">
-      🛒(<span id="cartCount">0</span>)
-    </button>
   </div>
 </header>
 
@@ -57,9 +53,9 @@
   <div class="hero-content">
     <h1>Welcome to Janya Fashions</h1>
     <p>Discover the latest trends in Women & Kids fashion — curated with elegance and comfort.</p>
-    <button class="hero-btn" onclick="window.location.href='women.html'">Shop Now (Women)</button>
+    <button class="hero-btn" onclick="window.location.href='women.html'">Shop Women Dress</button>
     <br><br>
-    <button class="hero-btn" onclick="window.location.href='kids.html'">Shop Now (Kids)</button>
+    <button class="hero-btn" onclick="window.location.href='kids.html'">Shop Kids Dress</button>
   </div>
 </section>
 
@@ -144,9 +140,18 @@
   </div>
 </footer>
 
+<div class="top-button" onclick="scrollToTop()">
+  ⟰
+</div>
 
 <div class="whatsapp-float" onclick="openWhatsApp()">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
+</div>
+
+<!-- Floating Cart Button -->
+<div class="floating-cart" onclick="toggleCart()">
+  🛒
+  <span id="floatingCartCount" class="floating-cart-count">0</span>
 </div>
 
 </body>

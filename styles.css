@@ -29,7 +29,7 @@ body {
 /* Align menu icon (left) and cart button (right) */
 .header-top-row {
   display: flex;
-  justify-content: space-between;  /* 👈 left, center, right layout */
+  justify-content: flex-start;  /* 👈 left, center, right layout */
   align-items: center;
   padding: 10px 20px;
   background: #fff;
@@ -56,6 +56,7 @@ body {
   .brand-name {
     font-size: 15px;
   }
+}
 
 .brand-name::after {
   content: "";
@@ -112,7 +113,7 @@ body {
   top: 20px;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .nav-links {
     display: none;
     flex-direction: column;
@@ -214,7 +215,7 @@ body {
   cursor: pointer;
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   .carousel {
     flex-wrap: wrap;
     justify-content: space-between;
@@ -266,11 +267,11 @@ footer {
 /* Floating WhatsApp */
 .whatsapp-float {
   position:fixed;
-  bottom:20px;
+  bottom:10px;
   right:20px;
   background:#25D366;
-  width:55px;
-  height:55px;
+  width: 30px;
+  height: 30px;
   border-radius:50%;
   display:flex;
   justify-content:center;
@@ -279,24 +280,6 @@ footer {
   cursor:pointer;
 }
 .whatsapp-float img{width:30px;}
-
-/* ========== CART BUTTON ========== */
-  
-.cart-btn-header {
-  background: linear-gradient(90deg, #ff7fbf, #d63384);
-  color: white;
-  border: none;
-  padding: 2px 20px;
-  border-radius: 25px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: 0.3s ease;
-}
-
-.cart-btn-header:hover {
-  transform: scale(1.05);
-   right: -350px;
-}
 
 /* ========== CART SIDEBAR ========== */
 #cartSidebar {
@@ -383,8 +366,9 @@ footer {
 .hero {
   background: linear-gradient(135deg, #ffe6f0 0%, #ffd9e8 100%);
   text-align: center;
-  padding: 30px 20px;
+  padding: 10px 20px;
   border-bottom: 1px solid #f8b8d0;
+  height: 50;
 }
 
 .hero-content {
@@ -393,7 +377,7 @@ footer {
 }
 
 .hero h1 {
-  font-size: 42px;
+  font-size: 32px;
   color: #d63384;
   font-family: "Playfair Display", serif;
   margin-bottom: 10px;
@@ -678,7 +662,7 @@ footer {
 }
 
 /* Responsive for mobile */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   .contact-details-box {
     flex-direction: column;
     align-items: center;
@@ -705,7 +689,7 @@ footer {
 }
 
 /* 📱 Adjust for mobile */
-@media (max-width: 768px) {
+@media (max-width: 900px) {
   #cartSidebar {
     top: 100px; /* 👈 push further down if header taller */
     height: calc(100% - 100px);
@@ -728,6 +712,7 @@ footer {
   cursor: pointer;
   padding: 5px 8px;
   user-select: none;
+  }
 }
 
 /* Small dropdown menu */
@@ -773,11 +758,11 @@ footer {
   position: fixed;
   bottom: 90px;             /* Adjust to appear above WhatsApp button */
   right: 20px;
-  width: 50px;
-  height: 50px;
+  width: 30px;
+  height: 30px;
   background: #ff7fbf;      /* Pink to match your theme */
   color: white;
-  font-size: 26px;
+  font-size: 16px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -791,4 +776,158 @@ footer {
 .top-button:hover {
   transform: scale(1.1);
   background: #d63384;
+}
+
+/* Floating Cart Button */
+.floating-cart {
+  position: fixed;
+  bottom: 50px;         /* Adjust as needed */
+  right: 20px;
+  width: 30px;
+  height: 30px;
+  background: #d63384;   /* Pink theme */
+  color: white;
+  font-size: 16px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: 0.3s ease;
+  z-index: 3000;
+}
+
+.floating-cart:hover {
+  transform: scale(1.1);
+}
+
+/* Cart count bubble */
+.floating-cart-count {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ff4d8d;
+  color: white;
+  padding: 2px 6px;
+  font-size: 12px;
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+/* POPUP OVERLAY */
+.preview-popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.65);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+/* POPUP BOX */
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+}
+
+/* CLOSE BUTTON */
+.close-popup {
+  float: right;
+  font-size: 28px;
+  cursor: pointer;
+}
+
+/* BIG IMAGE */
+.popup-img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+  margin: 10px 0;
+}
+
+/* ITEM TITLE */
+#popupName {
+  margin: 10px 0;
+  font-size: 20px;
+  font-weight: bold;
+  color: #d63384;
+}
+
+/* PRICE */
+#popupPrice {
+  font-size: 18px;
+  margin-bottom: 15px;
+}
+
+/* Add to Cart button */
+.popup-cart-btn {
+  background: #d63384;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 25px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.popup-cart-btn:hover {
+  transform: scale(1.05);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.8); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+
+.cart-items {
+  padding: 10px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #fff5f9;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+
+.cart-item img {
+  width: 50px;      /* small image */
+  height: 50px;
+  border-radius: 5px;
+  object-fit: cover;
+}
+
+.cart-item-info {
+  flex: 1;
+}
+
+.cart-item-remove {
+  cursor: pointer;
+  font-size: 18px;
+  color: #d63384;
+  font-weight: bold;
+}
+
+.product-img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;   /* shows full image */
+  object-position: center;
+  background: #fff;      /* optional */
 }
