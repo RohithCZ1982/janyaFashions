@@ -153,6 +153,11 @@
   🛒
   <span id="floatingCartCount" class="floating-cart-count">0</span>
 </div>
-
+<div>
+    {% for img in images %}
+        <img src="/static/images/{{ img }}" alt="{{ img }}">
+    {% endfor %}
+</div>
+  
 </body>
 </html>
