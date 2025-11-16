@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -5,32 +6,34 @@
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Janya Fashions</title>
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="script.js" ></script>
 </head>
 <body>
 
-<header class="top-header">
-  <div class="header-container">
+<div class="banner">
+  <span>🎀 Huge Sale! Up to 40% OFF on New Arrivals! 🎀</span>
+</div>
 
-    <!-- Logo (Text for now, can replace with image later) -->
-    <div class="brand-name">Janya Fashions</div>
+<header>
+  <div class="header-top-row">
 
-    <!-- Hamburger icon for mobile -->
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <!-- Menu icon (left) -->
+    <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
-    <!-- Navigation links -->
-    <nav class="nav-links" id="navMenu">
-      <a href="women.html">Women</a>
-      <a href="kids.html">Kids</a>
-      <a href="#reviews">Reviews</a>
-      <a href="#insta">Instagram</a>
-      <a href="#contact">Contact</a>
-    </nav>
+     <nav id="smallMenu" class="small-menu">
+        <a href="index.html">Home</a>
+        <a href="women.html">Women</a>
+        <a href="kids.html">Kids</a>
+        <a href="#contact">Contact</a>
+      </nav>
 
+    <!-- Brand name (center or left depending on your style) -->
+    <h1 class="brand-name">
+    Janya Fashions
+    </h1>
   </div>
 </header>
-
-<!-- CART BUTTON -->
-<button class="cart-btn" onclick="openCart()">🛒 Cart (<span id="cartCount">0</span>)</button>
 
 <!-- CART SIDEBAR -->
 <div id="cartSidebar">
@@ -42,93 +45,50 @@
   <div id="cartItems"></div>
   <br>
   <button class="btn" onclick="checkoutWhatsApp()">Order via WhatsApp</button>
-  <br>
+  <br><br>
   <button class="btn" onclick="emptyCart()">Empty Cart</button>
 </div>
 
-<div class="banner">
-  <span>🎀 Huge Sale! Up to 40% OFF on New Arrivals! 🎀</span>
-</div>
-
-<!-- WOMEN SECTION -->
-<section id="women" class="section container">
-  <h2>Women Collection</h2>
-  <div class="carousel-wrapper">
-    <div class="carousel" id="womenTrack">
-      <script>
-      const womenImgs = [
-      "images/w_1.webp",
-      "images/w_2.webp",
-      "images/w_3.webp",
-      "images/w_4.webp",
-      "images/w_5.webp"
-      ];
-
-       const womenPrice = [
-      "2500",
-      "3000",
-      "3250",
-      "2000",
-      "6000"
-      ];
-      for (let i = 1; i <= 20; i++) {
-        let img = womenImgs[i % womenImgs.length];
-        let price = womenPrice[i % womenImgs.length];
-        document.write(`
-          <div class="card">
-            <img src="${img}" onclick="openImg(this.src)">
-            <h4>Women Dress ${i}</h4>
-            <div class="price">₹${price}</div>
-            <button class="btn" onclick="addToCart('Women Dress ${i}', ${price}, 'JF-W-0${i}')">Add to Cart</button>
-          </div>
-        `);
-      }
-      </script>
-    </div>
+<!-- 🌸 Hero Section -->
+<section class="hero">
+  <div class="hero-content">
+    <h1>Welcome to Janya Fashions</h1>
+    <p>Discover the latest trends in Women & Kids fashion — curated with elegance and comfort.</p>
+    <button class="hero-btn" onclick="window.location.href='women.html'">Shop Women Dress</button>
+    <br><br>
+    <button class="hero-btn" onclick="window.location.href='kids.html'">Shop Kids Dress</button>
   </div>
 </section>
 
-<!-- KIDS SECTION -->
-<section id="kids" class="section container">
-  <h2>Kids Collection</h2>
-  <div class="carousel-wrapper">
-    <div class="carousel" id="kidsTrack">
 
-<script>
-const kidImgs = [
-"images/1.avif",
-"images/2.avif",
-"images/3.avif",
-"images/4.avif",
-"images/5.avif"
-];
-for (let i = 1; i <= 20; i++) {
-  let img = kidImgs[i % kidImgs.length];
-  document.write(`
-    <div class="card">
-      <img src="${img}" onclick="openImg(this.src)">
-      <h4>Kids Dress ${i}</h4>
-      <div class="price">₹${499 + i*10}</div>
-      <button class="btn" onclick="addToCart('Kids Dress ${i}', ${599+i*10}, 'JF-W-0${i}')">Add to Cart</button>
-    </div>
-  `);
-}
-</script>
-
-    </div>
-  </div>
-</section>
 
 <section id="reviews" class="section container">
   <h2>Customer Reviews</h2>
-  <div class="reviews">⭐️⭐️⭐️⭐️⭐️ "Loved the quality! My kids look adorable!" – Priya</div>
-  <div class="reviews">⭐️⭐️⭐️⭐️ "Amazing designs, great service!" – Ananya</div>
+
+  <div class="review-scroll-horizontal">
+    <div class="review-card">
+      <p>“Loved the pastel kurti I ordered! Quality was amazing.”</p>
+      <h4>– Aisha M.</h4>
+    </div>
+    <div class="review-card">
+      <p>“Beautiful collection for kids! My daughter adored her outfit.”</p>
+      <h4>– Kavya R.</h4>
+    </div>
+    <div class="review-card">
+      <p>“Fast delivery and elegant designs — totally worth it.”</p>
+      <h4>– Neha S.</h4>
+    </div>
+    <div class="review-card">
+      <p>“Such classy designs! I’ll definitely shop again.”</p>
+      <h4>– Sneha L.</h4>
+    </div>
+    <div class="review-card">
+      <p>“Excellent customer service and trendy clothes!”</p>
+      <h4>– Priya K.</h4>
+    </div>
+  </div>
 </section>
 
-<section id="insta" class="section container">
-  <h2>Instagram Gallery</h2>
-  <div class="insta">📷 Follow us @janyafashions</div>
-</section>
 
 <section id="contact" class="section container">
   <h2>Contact Us</h2>
@@ -147,139 +107,58 @@ for (let i = 1; i <= 20; i++) {
 
 </section>
 
-<footer>© 2025 Janya Fashions | Made with ❤️ for style</footer>
+<!-- 🌸 Contact Details Section -->
+<section id="contact-details" class="section container">
+  <h2>Get in Touch</h2>
+
+  <div class="contact-details-box">
+    <div class="contact-item">
+      <i class="fas fa-map-marker-alt"></i>
+      <p>123 Fashion Street, Bengaluru, India</p>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-phone-alt"></i>
+      <p>+91 98765 43210</p>
+    </div>
+    <div class="contact-item">
+      <i class="fas fa-envelope"></i>
+      <p>support@janyafashions.com</p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-content">
+    <p>© 2025 Janya Fashions | Made with ❤️</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook">
+        <i class="fab fa-facebook-f"></i>
+      </a>
+      <a href="https://www.instagram.com/" target="_blank" aria-label="Instagram">
+        <i class="fab fa-instagram"></i>
+      </a>
+    </div>
+  </div>
+</footer>
+
+<div class="top-button" onclick="scrollToTop()">
+  ⟰
+</div>
 
 <div class="whatsapp-float" onclick="openWhatsApp()">
   <img src="https://cdn-icons-png.flaticon.com/512/733/733585.png">
 </div>
 
-<!-- IMAGE POPUP LIGHTBOX -->
-<div id="imgView" onclick="closeImg()">
-  <img id="imgFull">
+<!-- Floating Cart Button -->
+<div class="floating-cart" onclick="toggleCart()">
+  🛒
+  <span id="floatingCartCount" class="floating-cart-count">0</span>
 </div>
-
-<!-- CART SCRIPT -->
-<script>
-let cart = JSON.parse(localStorage.getItem('jf_cart')) || [];
-updateCartUI()
-
-
-function toggleMenu() {
-  document.getElementById("navMenu").classList.toggle("active");
-}
-
-  // Close image popup on ESC key press
-document.addEventListener("keydown", function(event) {
-    if (event.key == "Escape") {
-       closeImg();
-  }
-});
-
-function addToCart(name, price, code) {
-  cart.push({name, price, code});
-  localStorage.setItem('jf_cart', JSON.stringify(cart));
-  updateCartUI();
-}
-
-function removeFromCart(index) {
-  cart.splice(index, 1);
-  updateCartUI();
-}
-
-function emptyCart() {
-  if (confirm("Clear your entire cart?")) {
-    cart = [];
-    localStorage.removeItem("jf_cart");   // ✅ delete from browser storage
-    updateCartUI();                       // refresh UI
-  }
-}
-
-
-function updateCartUI() {
-  cart = JSON.parse(localStorage.getItem('jf_cart')) || [];
+<div>
+    {% for img in images %}
+        <img src="/images/{{ img }}" alt="{{ img }}">
+    {% endfor %}
+</div>
   
-  document.getElementById("cartCount").innerText = cart.length;
-
-  const cartBox = document.getElementById("cartItems");
-  cartBox.innerHTML = "";
-
-  let total = 0; // ✅ to calculate total amount
-
-  cart.forEach((item, i) => {
-    total += item.price; // ✅ add item price to total
-
-    cartBox.innerHTML += `
-      <div class="cart-item">
-        <b>${item.name}</b> <br>
-        💰 ₹${item.price} <br>
-        🏷 ${item.code} <br>
-        <button class="remove-btn" onclick="removeFromCart(${i})">Remove</button>
-      </div>
-    `;
-  });
-
-  // ✅ show total amount in cart
-  cartBox.innerHTML += `
-    <div style="margin-top:10px; padding:8px; font-weight:bold; background:#ffe6f0; border-radius:6px;">
-      Total Amount: ₹${total}
-    </div>
-  `;
-}
-
-function openCart() {
-  document.getElementById("cartSidebar").classList.add("open");
-}
-function closeCart() {
-  document.getElementById("cartSidebar").classList.remove("open");
-}
-
-
-function scrollLeftDiv(id) {
-  document.getElementById(id).scrollBy({ left: -260, behavior: "smooth" });
-}
-
-function scrollRightDiv(id) {
-  document.getElementById(id).scrollBy({ left: 260, behavior: "smooth" });
-}
-
-function openImg(src) {
-  document.getElementById("imgView").style.display = "flex";
-  document.getElementById("imgFull").src = src;
-}
-
-function closeImg() {
-  document.getElementById("imgView").style.display = "none";
-}
-
-  let message = "Hi, I want to order:\n\n";
-  cart.forEach(c => {
-    message += `🛍 ${c.name}\n₹${c.price}  |  ${c.code}\n\n`;
-  });
-
-  function checkoutWhatsApp() {
-  if(cart.length === 0) {
-    alert("Cart is empty!");
-    return;
-  }
-
-  let message = "Hi, I want to order:\n\n";
-  let total = 0;
-
-  cart.forEach(c => {
-    message += `🛍 ${c.name}\n💰 ₹${c.price}\n🏷 ${c.code}\n\n`;
-    total += c.price;
-  });
-
-  message += `✅ Total Amount: ₹${total}\n\nPlease confirm the order.`;
-
-  let phone = "919876543210"; // ✅ replace with your number
-  let url = `https://wa.me/${phone}?text=` + encodeURIComponent(message);
-  window.open(url, "_blank");
-}
-
-</script>
-
-
-
 </body>
 </html>
