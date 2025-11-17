@@ -4,10 +4,11 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Janya Fashions</title>
-<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="/static/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <!-- CART SCRIPT -->
-<script src="script.js" ></script>
-<script src="cartscript.js" ></script>
+<script src="/static/script.js" ></script>
+<script src="/static/cartscript.js" ></script>
 </head>
 <body>
 
@@ -22,10 +23,10 @@
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
      <nav id="smallMenu" class="small-menu">
-        <a href="index.html">Home</a>
-        <a href="women.html">Women</a>
-        <a href="kids.html">Kids</a>
-      </nav>
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('women') }}">Women</a>
+      <a href="{{ url_for('kids') }}">Kids</a>
+    </nav>
 
     <!-- Brand name (center or left depending on your style) -->
    <h1 class="brand-name">
@@ -61,26 +62,11 @@
 <section id="kids" class="section container">
   <div class="carousel-wrapper">
     <div class="carousel" id="kidsTrack">
-
-<script>
-const kidImgs = [
-"../static/images/1.avif",
-"../static/images/2.avif",
-"../static/images/3.avif",
-"../static/images/4.avif",
-"../static/images/5.avif"
-];
-for (let i = 1; i <= 20; i++) {
-  let img = kidImgs[i % kidImgs.length];
-  document.write(`
-    <div class="card">
-      <img src="${img}"  class="product-img" onclick="openPreview('Kids Dress ${i}', ${499+i*10}, src)">
-    </div>
-  `);
-}
-</script>
-
-   </div>
+      <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          loadKidsImages({{ images|tojson|safe }});
+        });
+      </script>
   </div>
 </section>
 

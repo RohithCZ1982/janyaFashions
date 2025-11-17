@@ -54,7 +54,7 @@ function updateCartUI() {
       <img src="${item.image}" alt="">
       <div class="cart-item-info">
         <strong>${item.name}</strong><br>
-        💰₹{item.price}
+        💰₹${item.price}
       </div>
       <div class="cart-item-remove" onclick="removeFromCart(${index})">×</div>
     `;
@@ -65,3 +65,4 @@ function updateCartUI() {
   document.getElementById("floatingCartCount").innerText = cart.length;
  
 }
+

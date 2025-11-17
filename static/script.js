@@ -1,5 +1,3 @@
-
-
 function toggleMenu() {
   document.getElementById("smallMenu").classList.toggle("open");
 }
@@ -10,8 +8,6 @@ document.addEventListener("keydown", function(event) {
        closePreview();
   }
 });
-
-
 
 function updateCartUI() {
   cart = JSON.parse(localStorage.getItem('jf_cart')) || [];
@@ -121,3 +117,45 @@ function scrollToTop() {
     behavior: "smooth"
   });
 }
+
+function loadWomenImages(womenImages) {
+  const track = document.getElementById("womenTrack");
+  if (!track || !Array.isArray(womenImages)){
+    alert("no track");
+    return;
+  } 
+ 
+  womenImages.forEach((filename, idx) => {
+    const name = filename.split('.').shift();  
+    const parts = name.split('-');                 // ["dress", "2500"]
+    const amount = parseInt(parts.pop(), 10); 
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+       <img src="/static/images/women/${filename}" alt="${filename}"  class="product-img" onclick="openPreview('Women Dress ${idx + 1}', ${amount}, this.src)">
+    `;
+    track.appendChild(card);
+  });
+}
+
+function loadKidsImages(kidsImages) {
+  const track = document.getElementById("kidsTrack");
+  if (!track || !Array.isArray(kidsImages)){
+    alert("no track");
+    return;
+  } 
+ 
+    kidsImages.forEach((filename, idx) => {
+    const name = filename.split('.').shift();  
+    const parts = name.split('-');                 // ["dress", "2500"]
+    const amount = parseInt(parts.pop(), 10); 
+    const card = document.createElement("div");
+    card.className = "card";
+    card.innerHTML = `
+       <img src="/static/images/kids/${filename}" alt="${filename}"  class="product-img" onclick="openPreview('Kids Dress ${idx + 1}', ${amount} , this.src)">
+    `;
+    track.appendChild(card);
+  });
+}
+
+

@@ -4,9 +4,10 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Janya Fashions</title>
-<link rel="stylesheet" href="styles.css">
-<script src="script.js" ></script>
-<script src="cartscript.js" ></script>
+<link rel="stylesheet" href="/static/styles.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<script src="/static/script.js" ></script>
+<script src="/static/cartscript.js" ></script>
 </head>
 <body>
 
@@ -21,9 +22,9 @@
     <div class="menu-icon" onclick="toggleMenu()">☰</div>
 
      <nav id="smallMenu" class="small-menu">
-        <a href="index.html">Home</a>
-        <a href="women.html">Women</a>
-        <a href="kids.html">Kids</a>
+      <a href="{{ url_for('index') }}">Home</a>
+      <a href="{{ url_for('women') }}">Women</a>
+      <a href="{{ url_for('kids') }}">Kids</a>
       </nav>
 
     <!-- Brand name (center or left depending on your style) -->
@@ -62,30 +63,9 @@
   <div class="carousel-wrapper">
     <div class="carousel" id="womenTrack">
       <script>
-      const womenImgs = [
-      "../static/images/w_1.webp",
-      "../static/images/w_2.webp",
-      "../static/images/w_3.webp",
-      "../static/images/w_4.webp",
-      "../static/images/w_5.webp"
-      ];
-
-       const womenPrice = [
-      "2500",
-      "3000",
-      "3250",
-      "2000",
-      "6000"
-      ];
-      for (let i = 1; i <= 20; i++) {
-        let img = womenImgs[i % womenImgs.length];
-        let price = womenPrice[i % womenImgs.length];
-        document.write(`
-          <div class="card">
-            <img src="${img}"  class="product-img" onclick="openPreview('Women Dress ${i}', ${499+i*10}, src)">
-           </div>
-        `);
-      }
+        document.addEventListener("DOMContentLoaded", function () {
+          loadWomenImages({{ images|tojson|safe }});
+        });
       </script>
     </div>
   </div>
