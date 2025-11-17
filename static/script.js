@@ -9,47 +9,17 @@ document.addEventListener("keydown", function(event) {
   }
 });
 
-function updateCartUI() {
-  cart = JSON.parse(localStorage.getItem('jf_cart')) || [];
-  document.getElementById("floatingCartCount").innerText = cart.length;
-
-  const cartBox = document.getElementById("cartItems");
-  cartBox.innerHTML = "";
-
-  let total = 0; // ✅ to calculate total amount
-
-  cart.forEach((item, i) => {
-    total += item.price; // ✅ add item price to total
-
-    cartBox.innerHTML += `
-      <div class="cart-item">
-        <b>${item.name}</b> <br>
-        💰 ₹${item.price} <br>
-        <button class="remove-btn" onclick="removeFromCart(${i})">Remove</button>
-      </div>
-    `;
-  });
-
-  // ✅ show total amount in cart
-  cartBox.innerHTML += `
-    <div style="margin-top:10px; padding:8px; font-weight:bold; background:#ffe6f0; border-radius:6px;">
-      Total Amount: ₹${total}
-    </div>
-  `;
-}
-
 function openWhatsApp(){
- const phoneNumber = "91872507355"; // ✅ Replace with your full number (no + or spaces)
-  const message = "Hi Janya Fashions! I would like to know more about your collection.";
-
-  // Encode the message so spaces and symbols work properly in the URL
-  const encodedMessage = encodeURIComponent(message);
-
-  // Build the WhatsApp link
-  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-
-  // Open in a new tab/window
-  window.open(whatsappURL, "_blank");
+  const phone = "918792507355";
+  const message = encodeURIComponent("Hi Janya Fashions!");
+  const appURL = `whatsapp://send?phone=${phone}&text=${message}`;
+  const webFallback = `https://wa.me/${phone}?text=${message}`;
+  
+  window.location.href = appURL;
+  
+  setTimeout(() => {
+    window.open(appURL, "_blank", "noopener");
+  }, 1000);
 }
 
 function toggleCart() {
@@ -127,7 +97,7 @@ function loadWomenImages(womenImages) {
  
   womenImages.forEach((filename, idx) => {
     const name = filename.split('.').shift();  
-    const parts = name.split('-');                 // ["dress", "2500"]
+    const parts = name.split('-');   
     const amount = parseInt(parts.pop(), 10); 
     const card = document.createElement("div");
     card.className = "card";
@@ -144,11 +114,12 @@ function loadKidsImages(kidsImages) {
     alert("no track");
     return;
   } 
- 
+  
     kidsImages.forEach((filename, idx) => {
     const name = filename.split('.').shift();  
     const parts = name.split('-');                 // ["dress", "2500"]
     const amount = parseInt(parts.pop(), 10); 
+  
     const card = document.createElement("div");
     card.className = "card";
     card.innerHTML = `

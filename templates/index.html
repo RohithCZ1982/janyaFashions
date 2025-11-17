@@ -6,15 +6,6 @@
 <title>Janya Fashions</title>
 <link rel="stylesheet" href="/static/styles.css">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-<script src="/static/script.js" ></script>
-<style>
-  
-  img {
-    width: 200px;
-    height: 10px;
-    border-radius: 10px;
-  }
-</style>
 </head>
 <body>
 
@@ -61,9 +52,9 @@
   <div class="hero-content">
     <h1>Welcome to Janya Fashions</h1>
     <p>Discover the latest trends in Women & Kids fashion — curated with elegance and comfort.</p>
-    <button class="hero-btn" onclick="window.location.href='women.html'">Shop Women Dress</button>
+    <button class="hero-btn" onclick="window.location.href='{{ url_for('women') }}'">Shop Women Dress</button>
     <br><br>
-    <button class="hero-btn" onclick="window.location.href='kids.html'">Shop Kids Dress</button>
+    <button class="hero-btn" onclick="window.location.href='{{ url_for('kids') }}'">Shop Kids Dress</button>
   </div>
 </section>
 
@@ -162,5 +153,7 @@
   <span id="floatingCartCount" class="floating-cart-count">0</span>
 </div>
 
+<script src="/static/script.js" ></script>
+<script src="/static/cartscript.js" ></script>
 </body>
 </html>

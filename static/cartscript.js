@@ -1,5 +1,5 @@
 let popupItem = {};
-let cart = [];
+let cart = JSON.parse(localStorage.getItem('jf_cart')) || [];
 
 updateCartUI();
 
@@ -43,26 +43,32 @@ function emptyCart() {
 }
 
 function updateCartUI() {
-  const container = document.getElementById("cartItems");
-  container.innerHTML = "";
-
-  cart.forEach((item, index) => {
-    const div = document.createElement("div");
-    div.classList.add("cart-item");
-
-    div.innerHTML = `
-      <img src="${item.image}" alt="">
-      <div class="cart-item-info">
-        <strong>${item.name}</strong><br>
-        💰₹${item.price}
-      </div>
-      <div class="cart-item-remove" onclick="removeFromCart(${index})">×</div>
-    `;
-
-    container.appendChild(div);
-  });
- 
+  cart = JSON.parse(localStorage.getItem('jf_cart')) || [];
   document.getElementById("floatingCartCount").innerText = cart.length;
- 
+
+  const cartBox = document.getElementById("cartItems");
+  cartBox.innerHTML = "";
+
+  let total = 0; // ✅ to calculate total amount
+
+  cart.forEach((item, i) => {
+    total += item.price; // ✅ add item price to total
+
+    cartBox.innerHTML += `
+      <div class="cart-item">
+      <img src="${item.image}" alt="${item.name}" />
+        <b>${item.name}</b> <br>
+        💰 ₹${item.price} <br>
+        <button class="remove-btn" onclick="removeFromCart(${i})">Remove</button>
+      </div>
+    `;
+  });
+
+  // ✅ show total amount in cart
+  cartBox.innerHTML += `
+    <div style="margin-top:10px; padding:8px; font-weight:bold; background:#ffe6f0; border-radius:6px;">
+      Total Amount: ₹${total}
+    </div>
+  `;
 }
 
