@@ -94,15 +94,25 @@ function loadWomenImages(womenImages) {
     alert("no track");
     return;
   } 
- 
-  womenImages.forEach((filename, idx) => {
-    const name = filename.split('.').shift();  
-    const parts = name.split('-');   
-    const amount = parseInt(parts.pop(), 10); 
+  
+  womenImages.forEach((imgData, idx) => {
+    const filename = imgData.filename || imgData; // Support both old and new format
+    const number = imgData.number;
+    const name = imgData.name || `Women Dress ${idx + 1}`;
+    const amount = imgData.amount ? parseInt(imgData.amount, 10) : 0;
+    
     const card = document.createElement("div");
     card.className = "card";
+    card.style.position = "relative";
+    
+    // Create number badge if number exists
+    const badgeHtml = number !== null && number !== undefined 
+      ? `<div class="image-index-badge">#${String(number).padStart(3, '0')}</div>` 
+      : '';
+    
     card.innerHTML = `
-       <img src="/static/images/women/${filename}" alt="${filename}"  class="product-img" onclick="openPreview('Women Dress ${idx + 1}', ${amount}, this.src)">
+      ${badgeHtml}
+      <img src="/static/images/women/${filename}" alt="${name}" class="product-img" onclick="openPreview('${name}', ${amount}, this.src)">
     `;
     track.appendChild(card);
   });
@@ -115,15 +125,24 @@ function loadKidsImages(kidsImages) {
     return;
   } 
   
-    kidsImages.forEach((filename, idx) => {
-    const name = filename.split('.').shift();  
-    const parts = name.split('-');                 // ["dress", "2500"]
-    const amount = parseInt(parts.pop(), 10); 
-  
+  kidsImages.forEach((imgData, idx) => {
+    const filename = imgData.filename || imgData; // Support both old and new format
+    const number = imgData.number;
+    const name = imgData.name || `Kids Dress ${idx + 1}`;
+    const amount = imgData.amount ? parseInt(imgData.amount, 10) : 0;
+    
     const card = document.createElement("div");
     card.className = "card";
+    card.style.position = "relative";
+    
+    // Create number badge if number exists
+    const badgeHtml = number !== null && number !== undefined 
+      ? `<div class="image-index-badge">#${String(number).padStart(3, '0')}</div>` 
+      : '';
+    
     card.innerHTML = `
-       <img src="/static/images/kids/${filename}" alt="${filename}"  class="product-img" onclick="openPreview('Kids Dress ${idx + 1}', ${amount} , this.src)">
+      ${badgeHtml}
+      <img src="/static/images/kids/${filename}" alt="${name}" class="product-img" onclick="openPreview('${name}', ${amount}, this.src)">
     `;
     track.appendChild(card);
   });

@@ -7,7 +7,11 @@ function openPreview(name, price, image) {
   popupItem = { name, price, image };
 
   document.getElementById("popupImage").src = image;
-  document.getElementById("popupName").innerText = name;
+  // Removed popupName display - only show price
+  const popupNameEl = document.getElementById("popupName");
+  if (popupNameEl) {
+    popupNameEl.innerText = "";
+  }
   document.getElementById("popupPrice").innerText = "₹" + price;
 
   document.getElementById("previewPopup").style.display = "flex";

@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, jsonify
+from flask import Flask, render_template, request, jsonify, redirect, url_for
+from werkzeug.utils import secure_filename
 import os
 
 app = Flask(__name__)
@@ -6,20 +7,71 @@ app = Flask(__name__)
 @app.route("/women")
 def women():
     image_folder = "static/images/women"
-    images = [
-        img for img in os.listdir(image_folder)
-        if img.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif"))
-    ]
+    images = []
+    
+    if os.path.exists(image_folder):
+        for img in os.listdir(image_folder):
+            if img.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif")):
+                number, name, amount, ext = extract_image_info(img)
+                images.append({
+                    "filename": img,
+                    "number": number,
+                    "name": name,
+                    "amount": amount
+                })
+        # Sort by number (None values go to end)
+        images.sort(key=lambda x: (x["number"] is None, x["number"] or 999999))
+    
     return render_template("women.html", images=images)
 
 @app.route("/kids")
 def kids():
     image_folder = "static/images/kids"
-    images = [
-        img for img in os.listdir(image_folder)
-        if img.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif"))
-    ]
+    images = []
+    
+    if os.path.exists(image_folder):
+        for img in os.listdir(image_folder):
+            if img.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif")):
+                number, name, amount, ext = extract_image_info(img)
+                images.append({
+                    "filename": img,
+                    "number": number,
+                    "name": name,
+                    "amount": amount
+                })
+        # Sort by number (None values go to end)
+        images.sort(key=lambda x: (x["number"] is None, x["number"] or 999999))
+    
     return render_template("kids.html", images=images)
+
+def extract_image_info(filename):
+    """Extract number, name, and amount from filename.
+    Expected format: 'number - name - amount.ext' or 'name - amount.ext' or just 'filename.ext'
+    Returns: (number, name, amount, extension) where number can be None"""
+    name_without_ext, ext = os.path.splitext(filename)
+    
+    # Try to parse: number - name - amount
+    parts = name_without_ext.split(' - ')
+    
+    if len(parts) == 3:
+        # Format: number - name - amount
+        try:
+            number = int(parts[0].strip())
+            name = parts[1].strip()
+            amount = parts[2].strip()
+            return (number, name, amount, ext)
+        except ValueError:
+            # First part is not a number, treat as: name - amount
+            pass
+    
+    if len(parts) == 2:
+        # Format: name - amount (no number)
+        name = parts[0].strip()
+        amount = parts[1].strip()
+        return (None, name, amount, ext)
+    
+    # Just filename, no structure
+    return (None, name_without_ext, None, ext)
 
 @app.route("/rename")
 def rename():
@@ -30,18 +82,32 @@ def rename():
     women_images = []
     
     if os.path.exists(kids_folder):
-        kids_images = [
-            {"name": img, "folder": "kids"}
-            for img in os.listdir(kids_folder)
-            if img.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif"))
-        ]
+        for img in os.listdir(kids_folder):
+            if img.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif")):
+                number, name, amount, ext = extract_image_info(img)
+                kids_images.append({
+                    "name": img,
+                    "folder": "kids",
+                    "number": number,
+                    "parsed_name": name,
+                    "parsed_amount": amount
+                })
+        # Sort by number (None values go to end)
+        kids_images.sort(key=lambda x: (x["number"] is None, x["number"] or 999999))
     
     if os.path.exists(women_folder):
-        women_images = [
-            {"name": img, "folder": "women"}
-            for img in os.listdir(women_folder)
-            if img.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif"))
-        ]
+        for img in os.listdir(women_folder):
+            if img.lower().endswith((".png", ".jpg", ".jpeg", ".gif", ".webp", ".avif")):
+                number, name, amount, ext = extract_image_info(img)
+                women_images.append({
+                    "name": img,
+                    "folder": "women",
+                    "number": number,
+                    "parsed_name": name,
+                    "parsed_amount": amount
+                })
+        # Sort by number (None values go to end)
+        women_images.sort(key=lambda x: (x["number"] is None, x["number"] or 999999))
     
     return render_template("rename.html", kids_images=kids_images, women_images=women_images)
 
@@ -53,13 +119,26 @@ def rename_file():
         old_name = data.get("old_name")
         new_name = data.get("new_name")
         amount = data.get("amount")
+        number = data.get("number")
         
         if not folder or not old_name or not new_name or not amount:
             return jsonify({"success": False, "error": "Missing required fields"}), 400
         
-        # Construct new filename: name - amount.extension
+        # Get file extension
         file_ext = os.path.splitext(old_name)[1]
-        new_filename = f"{new_name} - {amount}{file_ext}"
+        
+        # Construct new filename: number - name - amount.extension
+        # Format number as 3-digit string (001, 002, etc.)
+        if number is not None and number != "":
+            try:
+                num = int(number)
+                num_str = f"{num:03d}"  # Format as 001, 002, etc.
+                new_filename = f"{num_str} - {new_name} - {amount}{file_ext}"
+            except ValueError:
+                # Invalid number, use without number
+                new_filename = f"{new_name} - {amount}{file_ext}"
+        else:
+            new_filename = f"{new_name} - {amount}{file_ext}"
         
         old_path = os.path.join("static/images", folder, old_name)
         new_path = os.path.join("static/images", folder, new_filename)
@@ -72,6 +151,32 @@ def rename_file():
         return jsonify({"success": True, "new_name": new_filename})
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
+
+
+@app.route("/upload_image", methods=["POST"])
+def upload_image():
+    """
+    Upload a new image into either the kids or women folder.
+    """
+    folder = request.form.get("folder")
+    file = request.files.get("file")
+
+    # Basic validation
+    if folder not in ("kids", "women") or file is None or file.filename == "":
+        # Just go back to the page; you can add flash messages later if needed
+        return redirect(url_for("rename"))
+
+    filename = secure_filename(file.filename)
+    if filename == "":
+        return redirect(url_for("rename"))
+
+    upload_dir = os.path.join("static", "images", folder)
+    os.makedirs(upload_dir, exist_ok=True)
+
+    file_path = os.path.join(upload_dir, filename)
+    file.save(file_path)
+
+    return redirect(url_for("rename"))
 
 @app.route("/")
 def index():
