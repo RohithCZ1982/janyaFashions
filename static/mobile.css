@@ -1,0 +1,325 @@
+/* Mobile-optimized styles for Women and Kids pages */
+
+/* ========== MOBILE RESPONSIVE (max-width: 768px) ========== */
+@media (max-width: 768px) {
+  
+  /* Container adjustments */
+  .container {
+    width: 100%;
+    padding: 0 10px;
+  }
+  
+  .section {
+    padding: 15px 0;
+  }
+  
+  /* Hero section mobile optimization */
+  .hero {
+    padding: 15px 10px;
+  }
+  
+  .hero h1 {
+    font-size: 24px;
+    margin-bottom: 8px;
+  }
+  
+  .hero p {
+    font-size: 14px;
+    margin-bottom: 15px;
+    line-height: 1.5;
+    padding: 0 10px;
+  }
+  
+  /* Carousel wrapper - remove arrows on mobile, make full width */
+  .carousel-wrapper {
+    position: relative;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .carousel {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 10px;
+    overflow-x: visible;
+    justify-content: center;
+  }
+  
+  /* Card styling for mobile - 2 columns */
+  .card {
+    width: 100% !important;
+    max-width: 100% !important;
+    flex: none !important;
+    margin: 0 !important;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    background: white;
+  }
+  
+  .card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 8px 8px 0 0;
+    display: block;
+  }
+  
+  /* Disable hover zoom on mobile */
+  .card:hover img {
+    transform: none;
+  }
+  
+  /* Image index badge - smaller on mobile */
+  .image-index-badge {
+    top: 6px;
+    right: 6px;
+    padding: 4px 8px;
+    font-size: 0.75em;
+    border-radius: 12px;
+  }
+  
+  /* Banner text - single line on mobile */
+  .banner {
+    font-size: 13px;
+    padding: 8px 5px;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .banner span {
+    display: inline-block;
+    white-space: nowrap;
+    line-height: 1.2;
+    padding-left: 100%;
+    animation: move 40s linear infinite;
+  }
+  
+  @keyframes move {
+    from { transform: translateX(0); }
+    to { transform: translateX(-100%); }
+  }
+  
+  /* Header adjustments */
+  .header-top-row {
+    padding: 8px 10px;
+  }
+  
+  .brand-name {
+    font-size: 18px;
+  }
+  
+  /* Cart sidebar - full width on mobile */
+  #cartSidebar {
+    width: 100%;
+    right: -100%;
+  }
+  
+  #cartSidebar.open {
+    right: 0;
+  }
+  
+  /* Floating cart button - larger touch target */
+  .floating-cart {
+    width: 50px;
+    height: 50px;
+    bottom: 70px;
+    right: 15px;
+    font-size: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .floating-cart-count {
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    top: -5px;
+    right: -5px;
+  }
+  
+  /* WhatsApp float - larger on mobile */
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 15px;
+    right: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+  
+  .whatsapp-float img {
+    width: 28px;
+    height: 28px;
+  }
+  
+  /* Top button - larger touch target */
+  .top-button {
+    width: 45px;
+    height: 45px;
+    bottom: 130px;
+    right: 15px;
+    font-size: 20px;
+  }
+  
+  /* Popup adjustments for mobile */
+  .preview-popup {
+    padding: 10px;
+  }
+  
+  .popup-content {
+    width: 95%;
+    max-width: 95%;
+    padding: 15px;
+  }
+  
+  .popup-img {
+    max-width: 100%;
+    max-height: 60vh;
+  }
+  
+  .close-popup {
+    font-size: 32px;
+    top: 10px;
+    right: 10px;
+  }
+  
+  .popup-cart-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 16px;
+    margin-top: 15px;
+  }
+  
+  /* Footer mobile adjustments */
+  footer {
+    padding: 20px 10px;
+    font-size: 14px;
+  }
+  
+  .footer-content {
+    gap: 10px;
+  }
+  
+  .social-icons {
+    gap: 12px;
+  }
+  
+  .social-icons a {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+/* ========== SMALL MOBILE (max-width: 480px) ========== */
+@media (max-width: 480px) {
+  
+  /* Even tighter spacing */
+  .carousel {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 8px;
+    padding: 8px;
+  }
+  
+  .card {
+    margin-bottom: 8px;
+  }
+  
+  .card img {
+    height: 180px;
+  }
+  
+  .hero h1 {
+    font-size: 20px;
+  }
+  
+  .hero p {
+    font-size: 13px;
+  }
+  
+  .banner {
+    font-size: 11px;
+    padding: 6px 5px;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  
+  .banner span {
+    white-space: nowrap;
+    animation: move 35s linear infinite;
+  }
+  
+  .brand-name {
+    font-size: 16px;
+  }
+  
+  /* Smaller badges */
+  .image-index-badge {
+    padding: 3px 6px;
+    font-size: 0.7em;
+    top: 4px;
+    right: 4px;
+  }
+}
+
+/* ========== TABLET (481px - 768px) ========== */
+@media (min-width: 481px) and (max-width: 768px) {
+  
+  .carousel {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+  }
+  
+  .card img {
+    height: 220px;
+  }
+}
+
+/* ========== TOUCH DEVICE OPTIMIZATIONS ========== */
+@media (hover: none) and (pointer: coarse) {
+  /* Remove hover effects on touch devices */
+  .card:hover img {
+    transform: none;
+  }
+  
+  /* Larger touch targets */
+  .card {
+    cursor: pointer;
+  }
+  
+  /* Ensure buttons are easily tappable */
+  .btn, .popup-cart-btn {
+    min-height: 44px;
+    min-width: 44px;
+  }
+}
+
+/* ========== LANDSCAPE MOBILE ========== */
+@media (max-width: 768px) and (orientation: landscape) {
+  .carousel {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+  }
+  
+  .card img {
+    height: 150px;
+  }
+  
+  .hero {
+    padding: 10px;
+  }
+  
+  .hero h1 {
+    font-size: 20px;
+    margin-bottom: 5px;
+  }
+  
+  .hero p {
+    font-size: 12px;
+    margin-bottom: 10px;
+  }
+}
+
