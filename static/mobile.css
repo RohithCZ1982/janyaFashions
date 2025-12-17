@@ -30,7 +30,7 @@
     padding: 0 10px;
   }
   
-  /* Carousel wrapper - remove arrows on mobile, make full width */
+  /* Carousel wrapper - full width on mobile */
   .carousel-wrapper {
     position: relative;
     width: 100%;
@@ -38,16 +38,22 @@
     margin: 0;
   }
   
-  .carousel {
+  /* Grid layout for both women and kids carousels */
+  .carousel,
+  #womenTrack,
+  #kidsTrack {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 12px;
     padding: 10px;
     overflow-x: visible;
     justify-content: center;
+    align-items: start;
+    width: 100%;
+    margin: 0 auto;
   }
   
-  /* Card styling for mobile - 2 columns */
+  /* Card styling - consistent for both pages */
   .card {
     width: 100% !important;
     max-width: 100% !important;
@@ -58,14 +64,30 @@
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     background: white;
+    display: block;
+    position: relative;
+    aspect-ratio: 3/4; /* Maintain aspect ratio */
   }
   
-  .card img {
+  /* Ensure cards in both tracks are identical */
+  #womenTrack .card,
+  #kidsTrack .card {
     width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 8px 8px 0 0;
+    max-width: 100%;
+    aspect-ratio: 3/4;
+  }
+  
+  /* Image display - show full image without cropping */
+  .card img,
+  #womenTrack .card img,
+  #kidsTrack .card img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 8px;
     display: block;
+    background: #f8f9fa;
   }
   
   /* Disable hover zoom on mobile */
@@ -178,6 +200,7 @@
   .popup-img {
     max-width: 100%;
     max-height: 60vh;
+    object-fit: contain;
   }
   
   .close-popup {
@@ -217,8 +240,10 @@
 /* ========== SMALL MOBILE (max-width: 480px) ========== */
 @media (max-width: 480px) {
   
-  /* Even tighter spacing */
-  .carousel {
+  /* Tighter spacing */
+  .carousel,
+  #womenTrack,
+  #kidsTrack {
     grid-template-columns: repeat(2, 1fr);
     gap: 8px;
     padding: 8px;
@@ -226,10 +251,15 @@
   
   .card {
     margin-bottom: 8px;
+    aspect-ratio: 3/4;
   }
   
-  .card img {
-    height: 180px;
+  .card img,
+  #womenTrack .card img,
+  #kidsTrack .card img {
+    object-fit: contain;
+    object-position: center;
+    background: #f8f9fa;
   }
   
   .hero h1 {
@@ -268,13 +298,23 @@
 /* ========== TABLET (481px - 768px) ========== */
 @media (min-width: 481px) and (max-width: 768px) {
   
-  .carousel {
+  .carousel,
+  #womenTrack,
+  #kidsTrack {
     grid-template-columns: repeat(3, 1fr);
     gap: 15px;
   }
   
-  .card img {
-    height: 220px;
+  .card {
+    aspect-ratio: 3/4;
+  }
+  
+  .card img,
+  #womenTrack .card img,
+  #kidsTrack .card img {
+    object-fit: contain;
+    object-position: center;
+    background: #f8f9fa;
   }
 }
 
@@ -299,13 +339,23 @@
 
 /* ========== LANDSCAPE MOBILE ========== */
 @media (max-width: 768px) and (orientation: landscape) {
-  .carousel {
+  .carousel,
+  #womenTrack,
+  #kidsTrack {
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
   }
   
-  .card img {
-    height: 150px;
+  .card {
+    aspect-ratio: 3/4;
+  }
+  
+  .card img,
+  #womenTrack .card img,
+  #kidsTrack .card img {
+    object-fit: contain;
+    object-position: center;
+    background: #f8f9fa;
   }
   
   .hero {
