@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Admin Dashboard - Janya Fashions</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+    background: linear-gradient(180deg, #fff0f7, #ffe6f0, #fff);
+    min-height: 100vh;
+    padding: 20px;
+    color: #333;
+  }
+  
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .header {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  h1 {
+    color: #d63384;
+    font-size: 2em;
+  }
+  
+  .logout-btn {
+    padding: 10px 20px;
+    background: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s;
+  }
+  
+  .logout-btn:hover {
+    background: #c82333;
+  }
+  
+  .dashboard-card {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+  }
+  
+  .dashboard-card h2 {
+    color: #d63384;
+    margin-bottom: 20px;
+    font-size: 1.5em;
+  }
+  
+  .admin-link {
+    display: inline-block;
+    padding: 15px 30px;
+    background: linear-gradient(135deg, #d63384, #c2185b);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.1em;
+    transition: transform 0.2s, box-shadow 0.2s;
+    box-shadow: 0 4px 8px rgba(214, 51, 132, 0.3);
+  }
+  
+  .admin-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(214, 51, 132, 0.4);
+  }
+  
+  .admin-link:active {
+    transform: translateY(0);
+  }
+  
+  .info-text {
+    color: #666;
+    margin-top: 15px;
+    font-size: 0.9em;
+    line-height: 1.6;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 8px;
+    color: #555;
+    font-weight: 600;
+    font-size: 0.95em;
+  }
+  
+  .form-input {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid #ddd;
+    border-radius: 6px;
+    font-size: 1em;
+    font-family: Arial, sans-serif;
+    transition: border-color 0.3s;
+    resize: vertical;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    border-color: #d63384;
+  }
+  
+  .save-banner-btn {
+    padding: 12px 24px;
+    background: linear-gradient(135deg, #28a745, #20c997);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+  }
+  
+  .save-banner-btn:hover {
+    background: linear-gradient(135deg, #218838, #1aa179);
+    transform: scale(1.02);
+  }
+  
+  .save-banner-btn:active {
+    transform: scale(0.98);
+  }
+  
+  .save-banner-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+    transform: none;
+  }
+  
+  .message {
+    padding: 12px;
+    border-radius: 6px;
+    margin-top: 15px;
+    font-weight: 500;
+  }
+  
+  .message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+  }
+  
+  .message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+  }
+  
+  .back-link {
+    display: inline-block;
+    margin-top: 20px;
+    color: #d63384;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  
+  .back-link:hover {
+    text-decoration: underline;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <h1>👨‍💼 Admin Dashboard</h1>
+      <a href="{{ url_for('admin_logout') }}" class="logout-btn">Logout</a>
+    </div>
+    
+    <div class="dashboard-card">
+      <h2>Banner Text Editor</h2>
+      <form id="bannerForm" onsubmit="saveBannerText(event)">
+        <div class="form-group">
+          <label for="bannerText">Banner Text (appears at top of all pages):</label>
+          <textarea id="bannerText" name="bannerText" rows="3" class="form-input" required>{{ banner_text }}</textarea>
+        </div>
+        <button type="submit" class="save-banner-btn">💾 Save Banner Text</button>
+        <div id="bannerMessage" class="message" style="display: none;"></div>
+      </form>
+    </div>
+    
+    <div class="dashboard-card">
+      <h2>Image Management</h2>
+      <a href="{{ url_for('rename') }}" class="admin-link">
+        📸 Image Library
+      </a>
+      <p class="info-text">
+        Manage and rename images in the Women and Kids collections. 
+        Upload new images, set index numbers, names, and amounts.
+      </p>
+    </div>
+    
+    <a href="{{ url_for('index') }}" class="back-link">← Back to Home</a>
+    
+    <script>
+      function saveBannerText(event) {
+        event.preventDefault();
+        const text = document.getElementById('bannerText').value.trim();
+        const messageDiv = document.getElementById('bannerMessage');
+        const saveBtn = event.target.querySelector('button[type="submit"]');
+        
+        if (!text) {
+          showBannerMessage(messageDiv, 'error', 'Banner text cannot be empty');
+          return;
+        }
+        
+        saveBtn.disabled = true;
+        saveBtn.textContent = 'Saving...';
+        
+        fetch('/admin/update_banner', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ text: text })
+        })
+        .then(response => response.json())
+        .then(data => {
+          if (data.success) {
+            showBannerMessage(messageDiv, 'success', data.message || 'Banner text updated successfully!');
+          } else {
+            showBannerMessage(messageDiv, 'error', data.error || 'Failed to update banner text');
+          }
+        })
+        .catch(error => {
+          showBannerMessage(messageDiv, 'error', 'Error: ' + error.message);
+        })
+        .finally(() => {
+          saveBtn.disabled = false;
+          saveBtn.textContent = '💾 Save Banner Text';
+        });
+      }
+      
+      function showBannerMessage(element, type, message) {
+        element.className = `message ${type}`;
+        element.textContent = message;
+        element.style.display = 'block';
+        
+        setTimeout(() => {
+          element.style.display = 'none';
+        }, 5000);
+      }
+    </script>
+  </div>
+</body>
+</html>
+
