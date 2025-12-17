@@ -52,9 +52,115 @@ body {
 }
 
 
-@media (max-width: 900px) {
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
   .brand-name {
     font-size: 20px;
+    margin-left: 10px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+  }
+  
+  .hero-content p {
+    font-size: 1rem;
+    padding: 0 15px;
+  }
+  
+  .carousel {
+    padding: 0 10px;
+  }
+  
+  .carousel-wrapper {
+    padding: 0;
+  }
+  
+  .whatsapp-float {
+    width: 50px;
+    height: 50px;
+    bottom: 80px;
+    right: 15px;
+  }
+  
+  .whatsapp-float img {
+    width: 60%;
+  }
+  
+  .floating-cart {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    bottom: 20px;
+    right: 15px;
+  }
+  
+  .floating-cart-count {
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    line-height: 20px;
+  }
+  
+  .top-button {
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    line-height: 40px;
+    right: 15px;
+    bottom: 140px;
+  }
+  
+  .popup-content {
+    width: 90%;
+    max-width: 400px;
+    padding: 20px;
+  }
+  
+  .popup-img {
+    max-height: 60vh;
+  }
+  
+  .popup-cart-btn {
+    padding: 10px 20px;
+    font-size: 14px;
+  }
+  
+  footer {
+    padding: 20px 10px;
+  }
+  
+  .footer-content p {
+    font-size: 14px;
+  }
+  
+  .social-icons a {
+    font-size: 18px;
+    margin: 0 8px;
+  }
+}
+
+/* Tablet Styles */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .brand-name {
+    font-size: 22px;
+  }
+  
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  
+  .popup-content {
+    width: 80%;
+    max-width: 500px;
+  }
+}
+
+/* Desktop Styles */
+@media (min-width: 1025px) {
+  .brand-name {
+    font-size: 24px;
   }
 }
 
@@ -772,9 +878,12 @@ footer {
 
 #cartSidebar {
   position: fixed;
-  top: 80px; /* 👈 pushes below header on mobile */
+  top: 70px;
   right: 0;
   width: 300px;
+  max-width: 100%;
+  height: calc(100vh - 70px);
+  overflow-y: auto;
   max-width: 90%;
   background: #fff;
   box-shadow: -2px 0 10px rgba(0, 0, 0, 0.2);
@@ -941,10 +1050,13 @@ footer {
 .popup-content {
   background: white;
   padding: 20px;
-  border-radius: 12px;
-  width: 90%;
-  max-width: 400px;
+  border-radius: 10px;
   text-align: center;
+  position: relative;
+  max-width: 600px;
+  width: 90%;
+  margin: 20px auto;
+  box-sizing: border-box;
   animation: fadeIn 0.3s ease;
 }
 
@@ -957,10 +1069,13 @@ footer {
 
 /* BIG IMAGE */
 .popup-img {
-  width: 100%;
-  height: 100%;
-  border-radius: 8px;
-  margin: 10px 0;
+  max-width: 100%;
+  max-height: 60vh;
+  width: auto;
+  height: auto;
+  border-radius: 5px;
+  margin: 0 auto 15px;
+  display: block;
 }
 
 /* ITEM TITLE */
